@@ -11,24 +11,7 @@ const { validateUserSignUp, userValidation, validateUserSignIn } = require('../m
 router.post('/create-user',validateUserSignUp,userValidation,createUser)
 router.post('/sign-in',validateUserSignIn,userValidation,userSignIn)
 router.get('/sign-out',isAuth,signOut)
-// router.post('/price',isAuth,async (req,res)=>{
-//     const user = req.user
-//     const price = req.body.price
-//     console.log(price)
-    
-//     try {
-//         await User.findByIdAndUpdate(user._id,{price})
-//         res.status(201).json({success: true,message:'updated!'})
-//         // console.log('reached!')
-//     } catch (error) {
-//         res.send({success:false,error:error.message})
-//     }
-//     res.json({user})
-//     // const user__ = User.findById(user._id.toString())
-//     // console.log(user.phone)
-//     // console.log(user._id.toString())
-    
-// })
+
 router.get('/profile',isAuth,(req,res)=>{
     if(!req.user){
         return res.json({ success: false,message: 'unauthorized access 123!'})
