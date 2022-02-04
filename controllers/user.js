@@ -83,7 +83,26 @@ exports.signOut = async (req, res) => {
 
 exports.postPrice = async (req, res) => {
   const user = req.body
+  const newPrice = user.price
+  const newAmount = user.amount
 
-  console.log(user)
+  const oldPrice = req.user.price
+  const oldAmount = req.user.amount
+  try {
+    await User.findByIdAndUpdate(req.user._id,{price : [...oldPrice, newPrice ]})
+    await User.findByIdAndUpdate(req.user._id,{amount : [...oldAmount, newAmount ]})    
+    res.json({
+      success: true,
+      totalPrice : newPrice,
+      amount : newAmount,
+    })
+  } catch (error) {
+    res.send({
+      success: false,
+      error: 'Error !'
+    })
+  }
+  // console.log('req.user._id.price : ',[...oldPrice, newPrice ],[...oldAmount, newAmount ],req.user._id)
+  // console.log(user)
 
 }

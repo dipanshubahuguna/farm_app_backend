@@ -25,8 +25,10 @@ const userSchema = new mongoose.Schema({
     },
     tokens: [{type: Object}],
     price: {
-        type: Number,
-        default: 0
+        type: [Number],
+    },
+    amount: {
+        type: [Number],
     }
 })
 

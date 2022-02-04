@@ -11,7 +11,7 @@ const { validateUserSignUp, userValidation, validateUserSignIn } = require('../m
 router.post('/create-user',validateUserSignUp,userValidation,createUser)
 router.post('/sign-in',validateUserSignIn,userValidation,userSignIn)
 router.get('/sign-out',isAuth,signOut)
-
+router.post('/price',isAuth,postPrice)
 router.get('/profile',isAuth,(req,res)=>{
     if(!req.user){
         return res.json({ success: false,message: 'unauthorized access 123!'})
