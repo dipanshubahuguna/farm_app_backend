@@ -3,6 +3,7 @@ const express = require('express')
 require('dotenv').config()
 require('./models/db')
 
+const port = process.env.PORT || 8000
 const userRouter = require('./routes/user')
 
 const User = require('./models/user')
@@ -15,8 +16,8 @@ app.get('/', (req, res) => {
     res.json({success: true,message:'Welcome to main route!'})
 })
 
-app.listen(8000, () => {
-    console.log('App is running!')
+app.listen(port, () => {
+    console.log(`App is running on port: ${port}`)
 })
 
 
